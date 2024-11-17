@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     subTotal = valorTotalCelular + valorTotalFone + valorTotalOculus;    
-    textoSubTotal.innerHTML = `<span class="texto-azul" id="valor-total">R$${subTotal}</span>`;    
+    textoSubTotal.innerHTML = `<span class="texto-azul" id="valor-total">R$ ${subTotal}</span>`;    
 })
 
 function adicionar() {
@@ -72,7 +72,7 @@ function adicionar() {
     }
 
     subTotal = valorTotalCelular + valorTotalFone + valorTotalOculus;
-    textoSubTotal.innerHTML = `<span class="texto-azul" id="valor-total">R$${subTotal}</span>`;
+    textoSubTotal.innerHTML = `<span class="texto-azul" id="valor-total">R$ ${subTotal}</span>`;
 }
 
 function limpar() {
@@ -85,7 +85,7 @@ function limpar() {
     subTotal = 0;
 
     carrinho.innerHTML = '';
-    textoSubTotal.innerHTML = `<span class="texto-azul" id="valor-total">R$${subTotal}</span>`;
+    textoSubTotal.innerHTML = `<span class="texto-azul" id="valor-total">R$ ${subTotal}</span>`;
 }
 
 function extrairNomeValor(item) {
