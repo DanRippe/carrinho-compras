@@ -36,43 +36,47 @@ function adicionar() {
     let valorItemSelecionado = parseInt(extrairNomeValor(itemSelecionado));    
     let qtdeSelecionada = parseInt(document.getElementById('quantidade').value);      
 
-    if (itemSelecionado.includes('Celular')) {
-        contadorCelular = contadorCelular + qtdeSelecionada;
-        valorTotalCelular = contadorCelular * valorItemSelecionado;
+    if (isNaN(qtdeSelecionada)) {
+        alert("Digite uma quantidade válida de itens.");
+    } else {
+        if (itemSelecionado.includes('Celular')) {
+            contadorCelular = contadorCelular + qtdeSelecionada;
+            valorTotalCelular = contadorCelular * valorItemSelecionado;
+        }
+    
+        if (itemSelecionado.includes('Fone de ouvido')) {
+            contadorFone = contadorFone + qtdeSelecionada;
+            valorTotalFone = contadorFone * valorItemSelecionado;
+        }
+    
+        if (itemSelecionado.includes('Oculus VR')) {
+            contadorOculus = contadorOculus + qtdeSelecionada;
+            valorTotalOculus = contadorOculus * valorItemSelecionado;
+        }
+    
+        carrinho.innerHTML = '';
+    
+        if (contadorCelular > 0) {
+            carrinho.innerHTML = carrinho.innerHTML + `<section class="carrinho__produtos__produto">
+                <span class="texto-azul">${contadorCelular}x</span> Celular <span class="texto-azul">R$${valorTotalCelular}</span>
+            </section>`;
+        }
+    
+        if (contadorFone > 0) {
+            carrinho.innerHTML = carrinho.innerHTML + `<section class="carrinho__produtos__produto">
+                <span class="texto-azul">${contadorFone}x</span> Fone de Ouvido <span class="texto-azul">R$${valorTotalFone}</span>
+            </section>`;
+        }
+    
+        if (contadorOculus > 0) {
+            carrinho.innerHTML = carrinho.innerHTML + `<section class="carrinho__produtos__produto">
+                <span class="texto-azul">${contadorOculus}x</span> Oculus VR <span class="texto-azul">R$${valorTotalOculus}</span>
+            </section>`;
+        }
+    
+        subTotal = valorTotalCelular + valorTotalFone + valorTotalOculus;
+        textoSubTotal.innerHTML = `<span class="texto-azul" id="valor-total">R$ ${subTotal}</span>`;    
     }
-
-    if (itemSelecionado.includes('Fone de ouvido')) {
-        contadorFone = contadorFone + qtdeSelecionada;
-        valorTotalFone = contadorFone * valorItemSelecionado;
-    }
-
-    if (itemSelecionado.includes('Oculus VR')) {
-        contadorOculus = contadorOculus + qtdeSelecionada;
-        valorTotalOculus = contadorOculus * valorItemSelecionado;
-    }
-
-    carrinho.innerHTML = '';
-
-    if (contadorCelular > 0) {
-        carrinho.innerHTML = carrinho.innerHTML + `<section class="carrinho__produtos__produto">
-            <span class="texto-azul">${contadorCelular}x</span> Celular <span class="texto-azul">R$${valorTotalCelular}</span>
-        </section>`;
-    }
-
-    if (contadorFone > 0) {
-        carrinho.innerHTML = carrinho.innerHTML + `<section class="carrinho__produtos__produto">
-            <span class="texto-azul">${contadorFone}x</span> Fone de Ouvido <span class="texto-azul">R$${valorTotalFone}</span>
-        </section>`;
-    }
-
-    if (contadorOculus > 0) {
-        carrinho.innerHTML = carrinho.innerHTML + `<section class="carrinho__produtos__produto">
-            <span class="texto-azul">${contadorOculus}x</span> Oculus VR <span class="texto-azul">R$${valorTotalOculus}</span>
-        </section>`;
-    }
-
-    subTotal = valorTotalCelular + valorTotalFone + valorTotalOculus;
-    textoSubTotal.innerHTML = `<span class="texto-azul" id="valor-total">R$ ${subTotal}</span>`;
 }
 
 function limpar() {
